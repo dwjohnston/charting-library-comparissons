@@ -49,3 +49,18 @@ export const boxPlots = [
       average: 400
     }
   ];
+
+
+  export const heatMapData= {
+
+    values: ["Andy", "Billie", "Ceola", "Dean"].flatMap((v => {
+        return ["a", "b","c","icecream", "brocolli", "sushi"].map(w => {
+            return {
+                user: v, 
+                food: w, 
+                numTimesEaten: Math.floor(Math.random() * 100)
+            }
+        })
+    }))
+
+  }
