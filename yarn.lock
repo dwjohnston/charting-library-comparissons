@@ -1576,6 +1576,18 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.4.tgz#0c8b74c50f29ee44f423f7416829c0bf8bb5eb27"
   integrity sha512-LwzQKA4vzIct1zNZzBmRKI9QuNpLgTQMEjsQLf3BXuGYb3QPTP4Yjf6mkdX+X1mYttZ808QpOwAzZjv28kq7DA==
 
+"@sgratzl/boxplots@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@sgratzl/boxplots/-/boxplots-1.3.0.tgz#c9063d98e33a15f880cf4bd3531be71497e2a94e"
+  integrity sha512-2BRWv+WOH58pwzSgP50buoXgxQic+4auz3BF0wiIUXS8D3QGkdBNgsNdQO1754Tm/0uEwly0R3WaCiGnoYWcmA==
+
+"@sgratzl/chartjs-chart-boxplot@^3.9.0":
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/@sgratzl/chartjs-chart-boxplot/-/chartjs-chart-boxplot-3.9.0.tgz#3b6e53012c1e81f004d5b422977fb2565958abbe"
+  integrity sha512-ZkZ6E/HUD4YWCF/rr3UZvWhs4st9FC0N3bXxk8xIRGeOHuq7r7W/DVL8PaFuGmk4N6/IEI0k1IRJB9xDs56+NA==
+  dependencies:
+    "@sgratzl/boxplots" "^1.3.0"
+
 "@sinclair/typebox@^0.24.1":
   version "0.24.28"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.28.tgz#15aa0b416f82c268b1573ab653e4413c965fe794"

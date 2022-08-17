@@ -4,6 +4,7 @@ import './App.css';
 import { RechartsExample } from './solutions/RechartsExample';
 import { boxPlots, heatMapData, simpleBarData, simpleBarData2, simpleBarData3 } from "./data";
 import { ReactChart2Example } from './solutions/ReactCharts2Example';
+import { BoxPlotController, BoxAndWiskers } from '@sgratzl/chartjs-chart-boxplot';
 
 import {
   Chart as ChartJS,
@@ -18,6 +19,7 @@ import { BoxPlotChart } from './solutions/RechartsBoxAndWhisker';
 import { Example } from './solutions/RechartsTheirScattar';
 import { RechartsHeatmap } from './solutions/RechartsHeatmap';
 ChartJS.register(
+  BoxAndWiskers,
   CategoryScale,
   LinearScale,
   BarElement,

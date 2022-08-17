@@ -83,7 +83,7 @@ const useBoxPlot = (boxPlots: BoxPlot[]): BoxPlotData[] => {
 
 
 // https://github.com/recharts/recharts/issues/369#issuecomment-949294494
-type BoxPlotProps = {
+export type BoxPlotProps = {
     data: Array<{
         min: number; 
         lowerQuartile: number; 
