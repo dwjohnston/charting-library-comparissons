@@ -18,14 +18,38 @@ import {
 import { BoxPlotChart } from './solutions/RechartsBoxAndWhisker';
 import { Example } from './solutions/RechartsTheirScattar';
 import { RechartsHeatmap } from './solutions/RechartsHeatmap';
+import { ReactChartjsBoxAndWhisker } from './solutions/ReactChartjs2BoxAndWhisker';
+
+const plugin = {
+
+  id: "increase-legend-spacing",
+  beforeInit(chart: any) {
+    // Get reference to the original fit function
+    const originalFit = chart.legend.fit;
+
+    // Override the fit function
+    chart.legend.fit = function fit() {
+      // Call original function and bind scope in order to use `this` correctly inside it
+      originalFit.bind(chart.legend)();
+      // Change the height as suggested in another answers
+      this.height += 20;
+    }
+  }
+};
+
+
+
+
 ChartJS.register(
   BoxAndWiskers,
+  BoxPlotController,
   CategoryScale,
   LinearScale,
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  plugin,
 );
 const data = [
   simpleBarData,
@@ -44,15 +68,15 @@ function App() {
       <button onClick={() => {
         setDataIndex((dataIndex + 1) % data.length);
       }}>toggle data set</button>
-      {/* <RechartsExample data ={data[dataIndex]}/>
+      {/* <RechartsExample data ={data[dataIndex]}/>*/}
 
-      <ReactChart2Example data ={data[dataIndex]}/>
-       */}
+      <ReactChart2Example data={data[dataIndex]} />
+      <ReactChartjsBoxAndWhisker data={boxPlots} />
 
       {/* <BoxPlotChart data ={boxPlots}/> */}
 
 
-      <RechartsHeatmap data ={heatMapData}/>
+      <RechartsHeatmap data={heatMapData} />
 
 
       <Example />

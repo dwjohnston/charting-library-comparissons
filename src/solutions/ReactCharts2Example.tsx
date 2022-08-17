@@ -2,12 +2,12 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { SimpleBarData } from '../data';
+import { Chart } from 'react-chartjs-2';
 
 export type ReactChart2ExampleProps = {
 
     data: SimpleBarData; 
 };
-
 
 
 export const ReactChart2Example = (props: ReactChart2ExampleProps) => {
@@ -20,14 +20,23 @@ export const ReactChart2Example = (props: ReactChart2ExampleProps) => {
         {
             data: data.values
         }
-    ]
+    ], 
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          boxWidth: 12,
+          boxHeight: 12
+        },
+        reverse: true
+      }
+    }
   }
 
   return (
     <div>
-      <Bar
-        data = {dataToUse}
-      />
+
+      <Chart type ="bar" data={dataToUse}/>
     </div>
   );
 };
