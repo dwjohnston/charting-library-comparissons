@@ -9,7 +9,7 @@ export type RechartsHeatmapProps = {
 };
 
 
-function processData(data: typeof heatMapData) {
+export function processData(data: typeof heatMapData) {
 
 
 

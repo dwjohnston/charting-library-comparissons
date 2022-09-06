@@ -6,68 +6,58 @@ import { Chart } from 'react-chartjs-2';
 
 
 export const ReactChartjsBoxAndWhisker = (props: BoxPlotProps) => {
-    const { data } = props;
+  const { data } = props;
 
 
-    const dataToUse = {
+  const dataToUse = {
 
 
-        datasets: [
-            {
+    labels: ["one", "two", "three"],
 
-label: "aaaa",
-backgroundColor: 'rgba(255,0,0,0.2)',
-borderColor: 'red',
-borderWidth: 1,
-padding: 10,
-itemRadius: 2,
-itemStyle: 'circle',
-itemBackgroundColor: '#000',
-outlierBackgroundColor: '#000',
+    datasets: [
+      {
 
-data: [
-    [1, 2, 3, 4, 5],
-    {
-      min: 1,
-      q1: 2,
-      median: 3,
-      q3: 4,
-      max: 5,
-    },
-    {
-      min: 1,
-      q1: 2,
-      median: 3,
-      q3: 4,
-      max: 5,
-      items: [1, 2, 3, 4, 5],
-    },
-    {
-      min: 1,
-      q1: 2,
-      median: 3,
-      q3: 4,
-      max: 5,
-      outliers: [1, 2, 3, 4, 5],
-    },
-  ],
-            }]
-    }
+        label: "aaaa",
+        backgroundColor: 'rgba(255,0,0,0.2)',
+        borderColor: 'red',
+        borderWidth: 1,
+        padding: 10,
+        itemRadius: 2,
+        itemStyle: 'circle' as const,
+        itemBackgroundColor: '#000',
+        outlierBackgroundColor: '#000',
+
+        data:  data.map((v) => {
+          return {
+            min: v.min, 
+            q1: v.lowerQuartile, 
+            median: v.median, 
+            q3: v.upperQuartile, 
+            max: v.max, 
+            average: v.average, 
+          }
+        })
+        
+      
+      }]
+  } ; 
 
 
-    return (
+  return (
 
-        <>
+    <>
+      <Chart
+        type="boxplot"
+        options={{
+          responsive: true,
 
-        <div>I have been unable to get boxplot working so far</div>
-        {/* @ts-ignore */}
-        <Chart type="boxplot" data={dataToUse}
+        }} 
+        data={dataToUse}
 
-       
-        />
-        </>
+      />
+    </>
 
 
 
-    );
+  );
 };

@@ -6,6 +6,8 @@ import { boxPlots, heatMapData, simpleBarData, simpleBarData2, simpleBarData3 } 
 import { ReactChart2Example } from './solutions/ReactCharts2Example';
 import { BoxPlotController, BoxAndWiskers } from '@sgratzl/chartjs-chart-boxplot';
 
+
+import { MatrixController, MatrixElement } from "chartjs-chart-matrix";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -19,6 +21,7 @@ import { BoxPlotChart } from './solutions/RechartsBoxAndWhisker';
 import { Example } from './solutions/RechartsTheirScattar';
 import { RechartsHeatmap } from './solutions/RechartsHeatmap';
 import { ReactChartjsBoxAndWhisker } from './solutions/ReactChartjs2BoxAndWhisker';
+import { ReactChartsHeatmap } from './solutions/ReactCharts2Heatmap';
 
 const plugin = {
 
@@ -43,6 +46,8 @@ const plugin = {
 ChartJS.register(
   BoxAndWiskers,
   BoxPlotController,
+  MatrixController,
+  MatrixElement,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -70,13 +75,16 @@ function App() {
       }}>toggle data set</button>
       {/* <RechartsExample data ={data[dataIndex]}/>*/}
 
-      <ReactChart2Example data={data[dataIndex]} />
-      <ReactChartjsBoxAndWhisker data={boxPlots} />
 
-      {/* <BoxPlotChart data ={boxPlots}/> */}
-
-
+      <ReactChartsHeatmap data={heatMapData}/>
       <RechartsHeatmap data={heatMapData} />
+
+      <ReactChartjsBoxAndWhisker data={boxPlots} />
+      <ReactChart2Example data={data[dataIndex]} />
+
+      <BoxPlotChart data ={boxPlots}/>
+
+
 
 
       <Example />
