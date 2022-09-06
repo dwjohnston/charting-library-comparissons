@@ -43,9 +43,7 @@ export const ReactChartsHeatmap = (props: ReactChartsHeatmapProps) => {
     }); 
 
     return <div style = {{width: 800, height: 800}}>
-        
-     {/* <pre> {JSON.stringify(newData2, null,2)}</pre>  */}
-        <Chart
+                <Chart
         id="foo"
         type="matrix"
         options={{
@@ -69,21 +67,30 @@ export const ReactChartsHeatmap = (props: ReactChartsHeatmapProps) => {
             }, 
             scales: {
                 x: {
+
+                    type:"category", 
                     ticks: {
-                      stepSize: 1
+                        display: true
                     },
                     grid: {
                       display: false
-                    }, 
+                    },
+                    
+                    labels: newData.reversedUserMap, 
                   },
                   y: {
+
+                    type:"category", 
+
                     offset: true,
                     ticks: {
-                      stepSize: 1
+                      display: true
                     },
                     grid: {
                       display: false
                     }, 
+
+                    labels: newData.reversedFoodMap
 
                   }
             }
@@ -92,7 +99,13 @@ export const ReactChartsHeatmap = (props: ReactChartsHeatmapProps) => {
             datasets: [{
                 label: 'Basic matrix',
 
-                data: newData2,
+                data: props.data.values.map((v) => {
+                    return {
+                        x: v.user, 
+                        y: v.food,
+                        v: v.numTimesEaten
+                    }
+                }), 
 
 
                 borderWidth: 1,
