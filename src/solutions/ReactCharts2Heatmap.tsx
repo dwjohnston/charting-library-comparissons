@@ -15,13 +15,45 @@ export const ReactChartsHeatmap = (props: ReactChartsHeatmapProps) => {
 
     const newData = processData(props.data); 
 
+    const newData2= newData.newData.map((v) =>{
+        const {x,y,z} = v; 
+        return {
+            x: x+1, y: y+1, v: z
+        }
+    }).sort((a, b) => {
+        if (a.x > b.x) {
+            return 1; 
+        }
+        if (a.x < b.x) {
+            return -1; 
+        }
+
+        if (a.x === b.x) {
+
+            if (a.y > b.y) {
+                return 1; 
+            }
+
+            if (a.y < b.y) {
+                return -1; 
+            }
+        }
+
+        return 0; 
+    }); 
+
     return <div style = {{width: 800, height: 800}}>
         
-     {/* <pre> {JSON.stringify(newData, null,2)}</pre>  */}
+     {/* <pre> {JSON.stringify(newData2, null,2)}</pre>  */}
         <Chart
+        id="foo"
         type="matrix"
         options={{
+
             plugins: {
+
+                
+
                 tooltip: {
                   callbacks: {
                     title() {
@@ -37,30 +69,34 @@ export const ReactChartsHeatmap = (props: ReactChartsHeatmapProps) => {
             }, 
             scales: {
                 x: {
-                    display: false,
-                    min: 0,
-                    max: 5,
-                    offset: false
-                },
-                y: {
-                    display: false,
-                    min: 0,
-                    max: 5
-                }
+                    ticks: {
+                      stepSize: 1
+                    },
+                    grid: {
+                      display: false
+                    }, 
+                  },
+                  y: {
+                    offset: true,
+                    ticks: {
+                      stepSize: 1
+                    },
+                    grid: {
+                      display: false
+                    }, 
+
+                  }
             }
         }}
         data={{
             datasets: [{
                 label: 'Basic matrix',
-                //data: [{ x: 1, y: 1 }, { x: 2, y: 1 }, { x: 1, y: 2 }, { x: 2, y: 2 }],
-                data: newData.newData.map((v) =>{
-                    const {x,y,z} = v; 
-                    return {
-                        x, y, v: z
-                    }
-                }),
+
+                data: newData2,
+
+
                 borderWidth: 1,
-                borderColor: 'rgba(0,0,0,0.5)',
+                borderColor: 'pink',
                 backgroundColor: (context) => {
                     //@ts-ignore
                     const value = context.dataset.data[context.dataIndex].v; 
@@ -69,9 +105,10 @@ export const ReactChartsHeatmap = (props: ReactChartsHeatmapProps) => {
                     console.log(opacity); 
                     const o2 = Math.floor(opacity * 100); 
                     return `rgba(255, 0, 0, ${opacity}`; 
+
                 },
-                width: ({ chart }) => (chart.chartArea || {}).width / 2 - 1,
-                height: ({ chart }) => (chart.chartArea || {}).height / 2 - 1,
+                width: ({chart}) => ((chart.chartArea || {}).width /newData.reversedUserMap.length - 1) -10,
+                height: ({chart}) =>((chart.chartArea || {}).height / newData.reversedFoodMap.length  - 1) -10
             }]
         }
         }

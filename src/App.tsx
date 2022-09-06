@@ -77,12 +77,12 @@ function App() {
 
 
       <ReactChartsHeatmap data={heatMapData}/>
-      <RechartsHeatmap data={heatMapData} />
+      {/* <RechartsHeatmap data={heatMapData} />
 
       <ReactChartjsBoxAndWhisker data={boxPlots} />
       <ReactChart2Example data={data[dataIndex]} />
 
-      <BoxPlotChart data ={boxPlots}/>
+      <BoxPlotChart data ={boxPlots}/> */}
 
 
 
