@@ -73,17 +73,16 @@ function App() {
       <button onClick={() => {
         setDataIndex((dataIndex + 1) % data.length);
       }}>toggle data set</button>
-      {/* <RechartsExample data ={data[dataIndex]}/>*/}
+      <RechartsExample data ={data[dataIndex]}/>
 
 
       <ReactChartsHeatmap data={heatMapData}/>
-      {/* <RechartsHeatmap data={heatMapData} />
+<RechartsHeatmap data={heatMapData} />
 
       <ReactChartjsBoxAndWhisker data={boxPlots} />
       <ReactChart2Example data={data[dataIndex]} />
 
-      <BoxPlotChart data ={boxPlots}/> */}
-
+      <BoxPlotChart data ={boxPlots}/> 
 
 
 

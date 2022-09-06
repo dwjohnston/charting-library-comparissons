@@ -44,7 +44,6 @@ export const ReactChartsHeatmap = (props: ReactChartsHeatmapProps) => {
 
     return <div style = {{width: 800, height: 800}}>
                 <Chart
-        id="foo"
         type="matrix"
         options={{
 
